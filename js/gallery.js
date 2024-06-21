@@ -84,8 +84,9 @@ gallery.insertAdjacentHTML('beforeend', galleryAll);
 
 gallery.addEventListener('click', event => {
   event.preventDefault();
-  const object = event.target;
-  if (object.nodeName !== 'IMG') return;
-  const bigImage = object.dataset.source;
-  console.log(bigImage);
+  if (event.target.nodeName !== 'IMG') return;
+  const image = event.target.dataset.source;
+  const instance = basicLightbox.create(`
+    <img src="${image}" width="800" height="600">`);
+  instance.show();
 });
